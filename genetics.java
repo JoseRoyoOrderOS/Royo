@@ -11,7 +11,8 @@ public class genetics {
 
 	public static void main(String args[]) {
 		populate();
-		//selection();
+		selection();
+		//breed();
 	}
 
 	public static void populate() {
@@ -46,15 +47,33 @@ public class genetics {
 		System.out.println(" ");
 	}
 
-	public static void selection() {
-		double rand = 0;
+	public static int selectIndex() {
+		double rand = Math.random() * N;
+		double pie = 0;
 		
 		for(int i=0; i<N; i++) {
-			rand = Math.random() * N;
-			for(int x=0; x<N; x++) {
-				
+			pie += amp[i][1];
+			if(rand < pie) {
+				return i;
 			}
 		}
+		return 5;
+	}
+
+	public static void selection() {
+		System.out.println("Nueva generacion: ");
+		
+		for(int i=0; i<N; i++) {
+			newGen[i] = pop[selectIndex()];
+			System.out.print(i+1 + ": ");
+			for(int x=0; x<L; x++) {
+				System.out.print(newGen[i][x]);
+			}
+			System.out.println(" ");
+		}
+	}
+
+	public static void breed() {
 		
 	}
 }
