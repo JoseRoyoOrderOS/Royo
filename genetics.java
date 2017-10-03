@@ -12,7 +12,7 @@ public class genetics {
 	public static void main(String args[]) {
 		populate();
 		selection();
-		//breed();
+		breed();
 	}
 
 	public static void populate() {
@@ -74,6 +74,23 @@ public class genetics {
 	}
 
 	public static void breed() {
-		
+		System.out.println(" ");
+		System.out.println("Switcheroo: ");
+
+		int temp[][] = new int[N][L];
+		for(int i=0; i<N; i++) {
+			int rand = (int)(Math.random() * N);
+			temp[i] = newGen[i];
+			newGen[i] = newGen[rand];
+			newGen[rand] = temp[i];
+		}
+		for(int i=0; i<N; i++) {
+			System.out.print(i+1 + ": ");
+			temp[i] = newGen[i];
+			for(int x=0; x<L; x++) {
+				System.out.print(newGen[i][x]);
+			}
+			System.out.println(" ");
+		}
 	}
 }
